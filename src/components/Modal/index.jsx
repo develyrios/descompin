@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
 import { ButtonComponent } from '../Button';
 
-export const ModalComponent = ({ title, children, open, controls = [] }) => {
+export const ModalComponent = ({ title, children, open, controls = [], }) => {
 
   return (
       <Modal show={open} onHide={() => {}}>
@@ -15,11 +15,12 @@ export const ModalComponent = ({ title, children, open, controls = [] }) => {
             {controls.map((control, controlIndex) => (
                 <ButtonComponent 
                     key={controlIndex} 
-                    variant={control.variant} 
-                    onClick={control.onClick} 
                     label={control.label} 
-                    loadingLabel="Salvando..." 
-                    isLoading={false} 
+                    variant={control.variant} 
+                    isDisabled={control.isDisabled}
+                    onClick={control.onClick} 
+                    isLoading={control.isLoading} 
+                    loadingLabel={controls.loadingLabel} 
                 />
             ))}
         </Modal.Footer>

@@ -3,32 +3,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { CardComponent } from '../../components/Card';
 import { ModalComponent } from '../../components/Modal';
+import { ModalSavePin } from '../../containers/ModalSavePin';
 
 export const Home = () => {
     return (
     <>
-        <ModalComponent 
-            title="Título do modal" 
-            open={true} 
-            controls={[
-                {
-                    label: "Criar pasta",
-                    variant: "primary",
-                    onClick: () => {
-                        console.log("Criou a pasta!");
-                    }
-                },
-                {
-                    label: "Fechar",
-                    variant: "secondary",
-                    onClick: () => {
-                        console.log("Fechou!");
-                    }
-                }
-            ]}
-        >
-            <p>Conteúdo do modal</p>
-        </ModalComponent>
+        <ModalSavePin open={true} />
 
         <Container fluid>
             <Row>
