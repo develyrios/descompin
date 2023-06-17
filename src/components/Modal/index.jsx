@@ -1,5 +1,5 @@
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { ButtonComponent } from '../Button';
 
 export const ModalComponent = ({ title, children, open, controls = [] }) => {
 
@@ -13,9 +13,14 @@ export const ModalComponent = ({ title, children, open, controls = [] }) => {
 
         <Modal.Footer>
             {controls.map((control, controlIndex) => (
-                <Button key={controlIndex} variant={control.variant} onClick={control.onClick}>
-                    {control.label}
-                </Button>
+                <ButtonComponent 
+                    key={controlIndex} 
+                    variant={control.variant} 
+                    onClick={control.onClick} 
+                    label={control.label} 
+                    loadingLabel="Salvando..." 
+                    isLoading={false} 
+                />
             ))}
         </Modal.Footer>
       </Modal>

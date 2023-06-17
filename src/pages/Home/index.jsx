@@ -12,17 +12,17 @@ export const Home = () => {
             open={true} 
             controls={[
                 {
-                    label: "Fechar",
-                    variant: "secondary",
-                    onClick: () => {
-                        console.log("Fechou!");
-                    }
-                },
-                {
                     label: "Criar pasta",
                     variant: "primary",
                     onClick: () => {
                         console.log("Criou a pasta!");
+                    }
+                },
+                {
+                    label: "Fechar",
+                    variant: "secondary",
+                    onClick: () => {
+                        console.log("Fechou!");
                     }
                 }
             ]}
