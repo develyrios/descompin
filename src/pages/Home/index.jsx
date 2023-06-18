@@ -4,11 +4,12 @@ import Col from 'react-bootstrap/Col';
 import { CardComponent } from '../../components/Card';
 import { ModalComponent } from '../../components/Modal';
 import { ModalSavePin } from '../../containers/ModalSavePin';
+import { ModalCreateFolder } from '../../containers/ModalCreateFolder';
 
 export const Home = () => {
     return (
     <>
-        <ModalSavePin open={true} />
+        <ModalCreateFolder open={true} />
 
         <Container fluid>
             <Row>

@@ -1,9 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 
-export const ButtonComponent = ({ variant, isDisabled, onClick, isLoading, label, loadingLabel }) => {
+export const ButtonComponent = ({ isLoading, label, loadingLabel, ...buttonProps }) => {
     return (
-        <Button variant={variant} disabled={isDisabled} onClick={onClick}>
+        <Button {...buttonProps}>
             {
                 isLoading && (
                 <>

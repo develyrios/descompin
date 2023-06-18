@@ -15,12 +15,7 @@ export const ModalComponent = ({ title, children, open, controls = [], }) => {
             {controls.map((control, controlIndex) => (
                 <ButtonComponent 
                     key={controlIndex} 
-                    label={control.label} 
-                    variant={control.variant} 
-                    isDisabled={control.isDisabled}
-                    onClick={control.onClick} 
-                    isLoading={control.isLoading} 
-                    loadingLabel={controls.loadingLabel} 
+                    {...control} 
                 />
             ))}
         </Modal.Footer>

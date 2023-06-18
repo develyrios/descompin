@@ -12,8 +12,7 @@ export const ModalSavePin = ({ open }) => {
         controls={[
             {
                 label: "Criar pasta",
-                variant: "primary",
-                isDisabled: false,
+                variant: "secondary",
                 onClick: () => {
                     console.log("Criou a pasta!");
                 },
@@ -36,7 +35,7 @@ export const ModalSavePin = ({ open }) => {
                     </Col>
                 </Row>
             </ListGroup.Item>
-            
+
             <ListGroup.Item>
                 <Row>
                     <Col xs={8}>
