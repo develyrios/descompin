@@ -1,7 +1,11 @@
+import { Home } from "./pages/Home"
+import { HeaderPartial } from "./partials/HeaderPartial"
+
 export const App = () => {
   return (
     <>
-      <h1>Olá mundo!</h1>
+    <HeaderPartial />
+    <Home />
     </>
   )
 }
