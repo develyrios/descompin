@@ -2,14 +2,20 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { CardComponent } from '../../components/Card';
-import { ModalComponent } from '../../components/Modal';
 import { ModalSavePin } from '../../containers/ModalSavePin';
 import { ModalCreateFolder } from '../../containers/ModalCreateFolder';
+import { Notification } from '../../components/Notification';
 
 export const Home = () => {
     return (
     <>
-        <ModalCreateFolder open={true} />
+        <ModalSavePin open={false} />
+        <ModalCreateFolder open={false} />
+
+        <Notification 
+            message="Criado com sucesso!"
+            onClose={() => console.log("Clicou em fechar")}
+        />
 
         <Container fluid>
             <Row>
