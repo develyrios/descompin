@@ -6,8 +6,11 @@ import {
     Routes, 
     Route 
 } from "react-router-dom";
+import { saveFolder, savePinInFolder } from "./services/pinService";
 
 export const App = () => {
+  // saveFolder('JavaScript');
+  // savePinInFolder("13576-15ec8", "321pin");
   return (
     <BrowserRouter>
       <HeaderPartial />
