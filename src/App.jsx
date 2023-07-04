@@ -6,18 +6,30 @@ import {
     Routes, 
     Route 
 } from "react-router-dom";
-import { saveFolder, savePinInFolder } from "./services/pinService";
+import { AppContext } from "./store/AppContext";
+
+const initialState = {
+  activePinId: null,
+  mode: null,
+  folders: [],
+  type: null,
+}
 
 export const App = () => {
-  // saveFolder('JavaScript');
-  // savePinInFolder("13576-15ec8", "321pin");
   return (
     <BrowserRouter>
-      <HeaderPartial />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/minhas-pastas" element={<MinhasPastasPage />} />
-      </Routes>
+      <div className="App">
+        <AppContext initialState={initialState}>
+
+          <HeaderPartial />
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/minhas-pastas" element={<MinhasPastasPage />} />
+          </Routes>
+
+        </AppContext>
+      </div>
     </BrowserRouter>
   )
 }
