@@ -1,15 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { CardComponent } from '../../components/Card';
 import { ModalSavePin } from '../../containers/ModalSavePin';
 import { ModalCreateFolder } from '../../containers/ModalCreateFolder';
 import { Notification } from '../../components/Notification';
+import { CardContainer } from '../../containers/CardContainer';
+import { useAppContext } from '../../store/AppContext';
 
 export const Home = () => {
+    const { state, dispatch} = useAppContext();
+
     return (
     <>
-        <ModalSavePin open={false} />
+        <ModalSavePin open={state.mode === 'savePin'} />
         <ModalCreateFolder open={false} />
 
         <Notification 
@@ -20,7 +23,7 @@ export const Home = () => {
         <Container fluid>
             <Row>
                 <Col xs={12} md={2}>
-                    <CardComponent 
+                    <CardContainer 
                         title="Título do Card" 
                         image="https://picsum.photos/200/300?53" 
                         total={0} 
@@ -28,7 +31,7 @@ export const Home = () => {
                 </Col>
 
                 <Col xs={12} md={2}>
-                    <CardComponent 
+                    <CardContainer 
                         title="Título do Card" 
                         image="https://picsum.photos/200/300?13" 
                         total={1} 
