@@ -5,6 +5,12 @@ export const reducer = (state, action) => {
                 ...state,
                 mode: 'savePin',
             }
+
+        case 'close modal':
+            return {
+                ...state,
+                mode: null,
+            }
     
         default:
             return state;
