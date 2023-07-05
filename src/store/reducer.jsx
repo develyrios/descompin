@@ -14,6 +14,17 @@ export const reducer = (state, action) => {
                 mode: null,
             }
     
+        case types.FETCH_FOLDERS_INIT_TYPE:
+            return {
+                ...state,
+            }
+
+        case types.FETCH_FOLDERS_SUCCESS_TYPE:
+            return {
+                ...state,
+                folders: action.payload,
+            }
+
         default:
             return state;
     }

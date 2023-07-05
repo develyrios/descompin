@@ -4,14 +4,19 @@ import Col from 'react-bootstrap/Col';
 import { ModalComponent } from '../../components/Modal';
 import { ButtonComponent } from '../../components/Button';
 import { useAppContext } from '../../store/AppContext';
-import { closeModalsAction } from '../../store/actions';
+import { closeModalsAction, fetchFoldersAction } from '../../store/actions';
+import { useEffect } from 'react';
 
 export const ModalSavePin = ({ open }) => {
-    const { dispatch } = useAppContext();
+    const { state, dispatch } = useAppContext();
 
     const handleClose = () => {
         dispatch(closeModalsAction())
     }
+
+    useEffect(() => {
+        fetchFoldersAction(dispatch);
+    }, [])
 
   return (
     <ModalComponent 
@@ -30,33 +35,19 @@ export const ModalSavePin = ({ open }) => {
         ]}
     >
         <ListGroup variant="flush">
-            <ListGroup.Item>
-                <Row>
-                    <Col xs={8}>
-                        Item da Lista
-                    </Col>
-                    <Col xs={4} className="text-end">
-                        <ButtonComponent 
-                            label="Salvar" 
-                            loadingLabel="Salvando"
-                        />
-                    </Col>
-                </Row>
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-                <Row>
-                    <Col xs={8}>
-                        Item da Lista
-                    </Col>
-                    <Col xs={4} className="text-end">
-                        <ButtonComponent 
-                            label="Salvar" 
-                            loadingLabel="Salvando"
-                        />
-                    </Col>
-                </Row>
-            </ListGroup.Item>
+            {state.folders.map((folder, folderIndex) => (
+                <ListGroup.Item key={folderIndex}>
+                    <Row>
+                        <Col xs={8}>{folder.name} - Id:{folder.id}</Col>
+                        <Col xs={4} className="text-end">
+                            <ButtonComponent 
+                                label="Salvar" 
+                                loadingLabel="Salvando"
+                            />
+                        </Col>
+                    </Row>
+                </ListGroup.Item>
+            ))}
         </ListGroup>
     </ModalComponent>
   );
