@@ -14,7 +14,6 @@ export const ModalSavePin = ({ open }) => {
                 label: "Criar pasta",
                 variant: "secondary",
                 onClick: () => {
-                    console.log("Criou a pasta!");
                 },
                 isLoading: false,
                 loadingLabel: "Criando...",
