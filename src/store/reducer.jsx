@@ -1,12 +1,14 @@
+import * as types from "./types";
+
 export const reducer = (state, action) => {
     switch (action.type) {
-        case 'open modal save pin':
+        case types.OPEN_MODAL_SAVE_PIN_TYPE:
             return {
                 ...state,
                 mode: 'savePin',
             }
 
-        case 'close modal':
+        case types.CLOSE_MODALS_TYPE:
             return {
                 ...state,
                 mode: null,

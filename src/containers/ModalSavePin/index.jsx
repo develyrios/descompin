@@ -4,14 +4,13 @@ import Col from 'react-bootstrap/Col';
 import { ModalComponent } from '../../components/Modal';
 import { ButtonComponent } from '../../components/Button';
 import { useAppContext } from '../../store/AppContext';
+import { closeModalsAction } from '../../store/actions';
 
 export const ModalSavePin = ({ open }) => {
     const { dispatch } = useAppContext();
 
     const handleClose = () => {
-        dispatch({
-            type: 'close modal',
-        })
+        dispatch(closeModalsAction())
     }
 
   return (
