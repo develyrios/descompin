@@ -5,40 +5,47 @@ export const reducer = (state, action) => {
         case types.OPEN_MODAL_SAVE_PIN_TYPE:
             return {
                 ...state,
+                type: action.type,
                 mode: 'savePin',
             }
 
         case types.OPEN_MODAL_CREATE_FOLDER_TYPE:
             return {
                 ...state,
+                type: action.type,
                 mode: 'createFolder',
             }
 
         case types.CLOSE_MODALS_TYPE:
             return {
                 ...state,
+                type: action.type,
                 mode: null,
             }
     
         case types.FETCH_FOLDERS_INIT_TYPE:
             return {
                 ...state,
+                type: action.type,
             }
 
         case types.FETCH_FOLDERS_SUCCESS_TYPE:
             return {
                 ...state,
+                type: action.type,
                 folders: action.payload,
             }
 
         case types.SAVE_FOLDER_INIT_TYPE:
             return {
                 ...state,
+                type: action.type,
             }
 
         case types.SAVE_FOLDER_SUCCESS_TYPE:
             return {
                 ...state,
+                type: action.type,
                 folders: [
                     ...state.folders,
                     action.payload,
@@ -46,6 +53,9 @@ export const reducer = (state, action) => {
             }
 
         default:
-            return state;
+            return {
+                ...state,
+                type: action.type,
+            };
     }
 };
