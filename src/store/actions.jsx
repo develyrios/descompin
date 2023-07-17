@@ -5,6 +5,10 @@ export const openModalSavePinAction = () => (
     { type: types.OPEN_MODAL_SAVE_PIN_TYPE }
 )
 
+export const openModalCreateFolder = () => (
+    { type: types.OPEN_MODAL_CREATE_FOLDER_TYPE }
+)
+
 export const closeModalsAction = () => (
     { type: types.CLOSE_MODALS_TYPE }
 )

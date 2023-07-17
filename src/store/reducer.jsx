@@ -8,6 +8,12 @@ export const reducer = (state, action) => {
                 mode: 'savePin',
             }
 
+        case types.OPEN_MODAL_CREATE_FOLDER_TYPE:
+            return {
+                ...state,
+                mode: 'createFolder',
+            }
+
         case types.CLOSE_MODALS_TYPE:
             return {
                 ...state,

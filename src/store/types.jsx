@@ -1,5 +1,7 @@
 export const OPEN_MODAL_SAVE_PIN_TYPE = 'open modal save pin';
 
+export const OPEN_MODAL_CREATE_FOLDER_TYPE = 'open modal create folder';
+
 export const CLOSE_MODALS_TYPE = 'close modals';
 
 export const FETCH_FOLDERS_INIT_TYPE = 'fetch folders init';

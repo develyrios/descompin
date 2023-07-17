@@ -4,14 +4,18 @@ import Col from 'react-bootstrap/Col';
 import { ModalComponent } from '../../components/Modal';
 import { ButtonComponent } from '../../components/Button';
 import { useAppContext } from '../../store/AppContext';
-import { closeModalsAction, fetchFoldersAction } from '../../store/actions';
+import { closeModalsAction, fetchFoldersAction, openModalCreateFolder } from '../../store/actions';
 import { useEffect } from 'react';
 
 export const ModalSavePin = ({ open }) => {
     const { state, dispatch } = useAppContext();
 
     const handleClose = () => {
-        dispatch(closeModalsAction())
+        dispatch(closeModalsAction());
+    }
+
+    const handleClickCreateFolder = () => {
+        dispatch(openModalCreateFolder());
     }
 
     useEffect(() => {
@@ -27,10 +31,9 @@ export const ModalSavePin = ({ open }) => {
             {
                 label: "Criar pasta",
                 variant: "secondary",
-                onClick: () => {
-                },
                 isLoading: false,
                 loadingLabel: "Criando...",
+                onClick: handleClickCreateFolder,
             }
         ]}
     >

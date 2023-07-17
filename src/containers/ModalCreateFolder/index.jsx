@@ -1,8 +1,11 @@
 import Form from 'react-bootstrap/Form';
 import { ModalComponent } from "../../components/Modal";
 import { useState } from 'react';
+import { useAppContext } from '../../store/AppContext';
+import { closeModalsAction } from '../../store/actions';
 
 export const ModalCreateFolder = ({ open }) => {
+    const { dispatch } = useAppContext();
     const [folderName, setFolderName] = useState("");
 
     const handleChange = (e) => {
@@ -13,10 +16,15 @@ export const ModalCreateFolder = ({ open }) => {
         e.preventDefault();
     }
 
+    const handleClose = () => {
+        dispatch(closeModalsAction());
+    }
+
     return (
         <ModalComponent 
-            open={open}
             title="Criar pasta"
+            open={open}
+            onHide={handleClose}
             controls={[
                 {
                     label: "Criar e salvar", 
