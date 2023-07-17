@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,19 +7,30 @@ import { ModalCreateFolder } from '../../containers/ModalCreateFolder';
 import { Notification } from '../../components/Notification';
 import { CardContainer } from '../../containers/CardContainer';
 import { useAppContext } from '../../store/AppContext';
+import { SAVE_FOLDER_SUCCESS_TYPE } from '../../store/types';
 
 export const Home = () => {
     const { state, dispatch} = useAppContext();
+
+    const [ showFeedback, setShowFeedback] = useState(false);
+
+    useEffect(() => {
+        if (state.type === SAVE_FOLDER_SUCCESS_TYPE) {
+            setShowFeedback(true);
+        }
+    }, [state.type])
 
     return (
     <>
         <ModalSavePin open={state.mode === 'savePin'} />
         <ModalCreateFolder open={state.mode === 'createFolder'} />
 
-        <Notification 
-            message="Criado com sucesso!"
-            onClose={() => console.log("Clicou em fechar")}
-        />
+        {showFeedback === true && (
+            <Notification 
+                message="Criado com sucesso!"
+                onClose={() => setShowFeedback(false)}
+            />
+        )}
 
         <Container fluid>
             <Row>
