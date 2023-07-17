@@ -9,6 +9,7 @@ export const openModalCreateFolder = () => (
     { type: types.OPEN_MODAL_CREATE_FOLDER_TYPE }
 )
 
+
 export const closeModalsAction = () => (
     { type: types.CLOSE_MODALS_TYPE }
 )
@@ -28,4 +29,22 @@ export const fetchFoldersAction = async (dispatch) => {
     dispatch(fetchFoldersInitAction());
     const folders = await pinService.getFolders();
     dispatch(fetchFoldersSuccessAction(folders));
+}
+
+
+export const saveFolderInitAction = () => (
+    { type: types.SAVE_FOLDER_INIT_TYPE }
+)
+
+export const saveFolderSuccessAction = (folder) => (
+    { 
+        type: types.SAVE_FOLDER_SUCCESS_TYPE, 
+        payload: folder
+    }
+)
+
+export const saveFolderAction = async (dispatch, folderName) => {
+    dispatch(saveFolderInitAction());
+    const newFolder = await pinService.saveFolder(folderName);
+    dispatch(saveFolderSuccessAction(newFolder));
 }

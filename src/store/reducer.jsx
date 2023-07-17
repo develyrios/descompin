@@ -31,6 +31,20 @@ export const reducer = (state, action) => {
                 folders: action.payload,
             }
 
+        case types.SAVE_FOLDER_INIT_TYPE:
+            return {
+                ...state,
+            }
+
+        case types.SAVE_FOLDER_SUCCESS_TYPE:
+            return {
+                ...state,
+                folders: [
+                    ...state.folders,
+                    action.payload,
+                ]
+            }
+
         default:
             return state;
     }
