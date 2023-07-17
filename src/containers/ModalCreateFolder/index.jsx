@@ -1,11 +1,12 @@
 import Form from 'react-bootstrap/Form';
 import { ModalComponent } from "../../components/Modal";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppContext } from '../../store/AppContext';
 import { closeModalsAction, saveFolderAction } from '../../store/actions';
+import { SAVE_FOLDER_INIT_TYPE, SAVE_FOLDER_SUCCESS_TYPE } from '../../store/types';
 
 export const ModalCreateFolder = ({ open }) => {
-    const { dispatch } = useAppContext();
+    const { state, dispatch } = useAppContext();
     const [folderName, setFolderName] = useState("");
 
     const handleClose = () => {
@@ -19,8 +20,13 @@ export const ModalCreateFolder = ({ open }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         saveFolderAction(dispatch, folderName);
-        handleClose();
     }
+
+    useEffect(() => {
+        if (state.type === SAVE_FOLDER_SUCCESS_TYPE) {
+            handleClose();
+        }
+    }, [state.type])
 
     return (
         <ModalComponent 
@@ -31,7 +37,7 @@ export const ModalCreateFolder = ({ open }) => {
                 {
                     label: "Criar e salvar", 
                     variant: "secondary", 
-                    isLoading: false, 
+                    isLoading: state.type === SAVE_FOLDER_INIT_TYPE, 
                     loadingLabel: "Criando...", 
                     type: "submit", 
                     form: "formCriarPasta"

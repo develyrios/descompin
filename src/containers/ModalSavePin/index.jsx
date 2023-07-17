@@ -41,7 +41,7 @@ export const ModalSavePin = ({ open }) => {
             {state.folders.map((folder, folderIndex) => (
                 <ListGroup.Item key={folderIndex}>
                     <Row>
-                        <Col xs={8}>{folder.name} - Id:{folder.id}</Col>
+                        <Col xs={8}>{folder.name}</Col>
                         <Col xs={4} className="text-end">
                             <ButtonComponent 
                                 label="Salvar" 
