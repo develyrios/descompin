@@ -4,7 +4,12 @@ import Col from 'react-bootstrap/Col';
 import { ModalComponent } from '../../components/Modal';
 import { ButtonComponent } from '../../components/Button';
 import { useAppContext } from '../../store/AppContext';
-import { closeModalsAction, fetchFoldersAction, openModalCreateFolder } from '../../store/actions';
+import { 
+    closeModalsAction, 
+    fetchFoldersAction, 
+    openModalCreateFolder, 
+    savePinInFolderAction
+} from '../../store/actions';
 import { useEffect } from 'react';
 
 export const ModalSavePin = ({ open }) => {
@@ -18,9 +23,20 @@ export const ModalSavePin = ({ open }) => {
         dispatch(openModalCreateFolder());
     }
 
+    const handleClickSavePinInFolder = (folderId) => {
+        savePinInFolderAction(dispatch, state.activePinId, folderId);
+    }
+
     useEffect(() => {
         fetchFoldersAction(dispatch);
     }, [])
+
+    const foldersNormalized = state.folders.map(folder => {
+        return ({
+            ...folder,
+            saved: folder.pins.includes(state.activePinId),
+        })
+    })
 
   return (
     <ModalComponent 
@@ -38,14 +54,17 @@ export const ModalSavePin = ({ open }) => {
         ]}
     >
         <ListGroup variant="flush">
-            {state.folders.map((folder, folderIndex) => (
+            {foldersNormalized.map((folder, folderIndex) => (
                 <ListGroup.Item key={folderIndex}>
                     <Row>
                         <Col xs={8}>{folder.name}</Col>
                         <Col xs={4} className="text-end">
                             <ButtonComponent 
-                                label="Salvar" 
-                                loadingLabel="Salvando"
+                                label={folder.saved ? "Salvo" : "Salvar"} 
+                                loadingLabel="Salvando" 
+                                variant={folder.saved ? "secondary" : "primary"} 
+                                disabled={folder.saved}
+                                onClick={() => handleClickSavePinInFolder(folder.id)} 
                             />
                         </Col>
                     </Row>

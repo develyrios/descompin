@@ -36,6 +36,7 @@ export const Home = () => {
             <Row>
                 <Col xs={12} md={2}>
                     <CardContainer 
+                        id="123"
                         title="Título do Card" 
                         image="https://picsum.photos/200/300?53" 
                         total={0} 
@@ -44,6 +45,7 @@ export const Home = () => {
 
                 <Col xs={12} md={2}>
                     <CardContainer 
+                        id="456"
                         title="Título do Card" 
                         image="https://picsum.photos/200/300?13" 
                         total={1} 

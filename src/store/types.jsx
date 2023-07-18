@@ -9,3 +9,6 @@ export const FETCH_FOLDERS_TYPE = 'fetch folders';
 export const SAVE_FOLDER_INIT_TYPE = 'save folder init';
 export const SAVE_FOLDER_SUCCESS_TYPE = 'save folder success';
 export const SAVE_FOLDER_TYPE = 'save folder';
+
+export const SAVE_PIN_IN_FOLDER_INIT_TYPE = 'save pin in folder init';
+export const SAVE_PIN_IN_FOLDER_SUCCESS_TYPE = 'save pin in folder success';

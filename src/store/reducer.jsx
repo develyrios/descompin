@@ -7,6 +7,7 @@ export const reducer = (state, action) => {
                 ...state,
                 type: action.type,
                 mode: 'savePin',
+                activePinId: action.payload,
             }
 
         case types.OPEN_MODAL_CREATE_FOLDER_TYPE:
@@ -50,6 +51,13 @@ export const reducer = (state, action) => {
                     ...state.folders,
                     action.payload,
                 ]
+            }
+
+        case types.SAVE_PIN_IN_FOLDER_SUCCESS_TYPE:
+            return {
+                ...state,
+                type: action.type,
+                folders: action.payload,
             }
 
         default:
