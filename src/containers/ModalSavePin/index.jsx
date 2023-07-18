@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,10 +11,11 @@ import {
     openModalCreateFolder, 
     savePinInFolderAction
 } from '../../store/actions';
-import { useEffect } from 'react';
 
 export const ModalSavePin = ({ open }) => {
     const { state, dispatch } = useAppContext();
+
+    const [itensLoading, setItensLoading] = useState({});
 
     const handleClose = () => {
         dispatch(closeModalsAction());
@@ -23,8 +25,22 @@ export const ModalSavePin = ({ open }) => {
         dispatch(openModalCreateFolder());
     }
 
-    const handleClickSavePinInFolder = (folderId) => {
-        savePinInFolderAction(dispatch, state.activePinId, folderId);
+    const handleClickSavePinInFolder = async (folderId) => {
+        setItensLoading((prevState) => {
+            return {
+                ...prevState,
+                [folderId]: true,
+            }
+        });
+        
+        await savePinInFolderAction(dispatch, state.activePinId, folderId);
+
+        setItensLoading((prevState) => {
+            return {
+                ...prevState,
+                [folderId]: false,
+            }
+        });
     }
 
     useEffect(() => {
@@ -63,7 +79,8 @@ export const ModalSavePin = ({ open }) => {
                                 label={folder.saved ? "Salvo" : "Salvar"} 
                                 loadingLabel="Salvando" 
                                 variant={folder.saved ? "secondary" : "primary"} 
-                                disabled={folder.saved}
+                                disabled={folder.saved} 
+                                isLoading={itensLoading[folder.id]} 
                                 onClick={() => handleClickSavePinInFolder(folder.id)} 
                             />
                         </Col>
