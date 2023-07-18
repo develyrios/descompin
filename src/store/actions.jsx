@@ -19,7 +19,6 @@ export const openModalCreateFolder = () => (
     { type: types.OPEN_MODAL_CREATE_FOLDER_TYPE }
 )
 
-
 export const closeModalsAction = () => (
     { type: types.CLOSE_MODALS_TYPE }
 )
@@ -79,4 +78,23 @@ export const savePinInFolderAction = async (dispatch, pinId, folderId) => {
     await pinService.savePinInFolder(folderId, pinId);
     const folders = await pinService.getFolders();
     dispatch(savePinInFolderSuccessAction(folders));
+}
+
+// FETCH PINS ACTIONS
+export const fetchPinsInitAction = () => (
+    { types: types.FETCH_PINS_INIT_TYPE }
+)
+
+export const fetchPinsSuccessAction = (pinsData) => (
+    { 
+        types: types.FETCH_PINS_SUCCESS_TYPE, 
+        payload: pinsData,
+    }
+)
+
+export const fetchPinsAction = async (dispatch) => {
+    dispatch(fetchPinsInitAction());
+    const pinsData = await pinService.getPins();
+    dispatch(fetchPinsSuccessAction(pinsData));
+    console.log("fetch pins action sendo chamado");
 }

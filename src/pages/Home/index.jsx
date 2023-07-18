@@ -8,39 +8,24 @@ import { Notification } from '../../components/Notification';
 import { CardContainer } from '../../containers/CardContainer';
 import { useAppContext } from '../../store/AppContext';
 import { SAVE_FOLDER_SUCCESS_TYPE } from '../../store/types';
-
-const pinsData = [
-    {
-        id: "123",
-        title: "Pin Teste 1",
-        image: "https://picsum.photos/200/300?53",
-        total: 0,
-    },
-    {
-        id: "456",
-        title: "Pin Teste 2",
-        image: "https://picsum.photos/200/300?13",
-        total: 0,
-    },
-    {
-        id: "789",
-        title: "Pin Teste 3",
-        image: "https://picsum.photos/200/300?37",
-        total: 0,
-    },
-];
+import { fetchPinsAction } from '../../store/actions';
 
 export const Home = () => {
-    const { state, dispatch} = useAppContext();
+    const { state, dispatch } = useAppContext();
 
     const [ showFeedback, setShowFeedback] = useState(false);
 
-    const pinsNormalized = pinsData.map(pin => ({
+    const pinsNormalized = state.pins.map(pin => ({
         ...pin,
         total: state.folders.filter(folder => (
             folder.pins.includes(pin.id)
         )).length
     }));
+
+    useEffect(() => {
+        console.log("useEffect fetch pins sendo chamado");
+        fetchPinsAction(dispatch);
+      }, []);
 
     useEffect(() => {
         if (state.type === SAVE_FOLDER_SUCCESS_TYPE) {

@@ -23,24 +23,12 @@ export const reducer = (state, action) => {
                 type: action.type,
                 mode: null,
             }
-    
-        case types.FETCH_FOLDERS_INIT_TYPE:
-            return {
-                ...state,
-                type: action.type,
-            }
 
         case types.FETCH_FOLDERS_SUCCESS_TYPE:
             return {
                 ...state,
                 type: action.type,
                 folders: action.payload,
-            }
-
-        case types.SAVE_FOLDER_INIT_TYPE:
-            return {
-                ...state,
-                type: action.type,
             }
 
         case types.SAVE_FOLDER_SUCCESS_TYPE:
@@ -58,6 +46,13 @@ export const reducer = (state, action) => {
                 ...state,
                 type: action.type,
                 folders: action.payload,
+            }
+
+        case types.FETCH_PINS_SUCCESS_TYPE:
+            return {
+                ...state,
+                type: action.type,
+                pins: action.payload,
             }
 
         default:
