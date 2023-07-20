@@ -58,6 +58,8 @@ export const saveFolderAction = async (dispatch, folderName) => {
     await sleep(1000);
     const newFolder = await pinService.saveFolder(folderName);
     dispatch(saveFolderSuccessAction(newFolder));
+
+    // if pinID dispatch savePinInFolder -> pra salvar o pin dentro da nova pasta criada
 }
 
 // SAVE PIN IN FOLDER ACTIONS
@@ -82,12 +84,12 @@ export const savePinInFolderAction = async (dispatch, pinId, folderId) => {
 
 // FETCH PINS ACTIONS
 export const fetchPinsInitAction = () => (
-    { types: types.FETCH_PINS_INIT_TYPE }
+    { type: types.FETCH_PINS_INIT_TYPE }
 )
 
 export const fetchPinsSuccessAction = (pinsData) => (
     { 
-        types: types.FETCH_PINS_SUCCESS_TYPE, 
+        type: types.FETCH_PINS_SUCCESS_TYPE, 
         payload: pinsData,
     }
 )
@@ -96,5 +98,4 @@ export const fetchPinsAction = async (dispatch) => {
     dispatch(fetchPinsInitAction());
     const pinsData = await pinService.getPins();
     dispatch(fetchPinsSuccessAction(pinsData));
-    console.log("fetch pins action sendo chamado");
 }

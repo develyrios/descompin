@@ -23,7 +23,6 @@ export const Home = () => {
     }));
 
     useEffect(() => {
-        console.log("useEffect fetch pins sendo chamado");
         fetchPinsAction(dispatch);
       }, []);
 

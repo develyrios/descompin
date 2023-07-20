@@ -42,7 +42,6 @@ export const savePinInFolder = async (folderId, pinId) => {
 }
 
 export const getPins = async () => {
-    console.log("get pins sendo chamado");
     return [
         {
             id: "123",
