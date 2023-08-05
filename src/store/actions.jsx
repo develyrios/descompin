@@ -53,13 +53,12 @@ export const saveFolderSuccessAction = (folder) => (
     }
 )
 
-export const saveFolderAction = async (dispatch, folderName) => {
+export const saveFolderAction = async (dispatch, folderName, pinId) => {
     dispatch(saveFolderInitAction());
     await sleep(1000);
     const newFolder = await pinService.saveFolder(folderName);
-    dispatch(saveFolderSuccessAction(newFolder));
-
-    // if pinID dispatch savePinInFolder -> pra salvar o pin dentro da nova pasta criada
+    const folder = await pinService.savePinInFolder(newFolder.id, pinId);
+    dispatch(saveFolderSuccessAction(folder));
 }
 
 // SAVE PIN IN FOLDER ACTIONS
