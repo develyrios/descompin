@@ -4,8 +4,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 export const ListGroupComponent = ({ items = [] }) => {
   return (
     <ListGroup as="ul">
-        {items.map(item => (
+        {items.map((item, itemIndex) => (
             <ListGroup.Item
+                key={itemIndex}
                 as="li"
                 className="d-flex justify-content-between align-items-start"
             >
@@ -13,13 +14,9 @@ export const ListGroupComponent = ({ items = [] }) => {
                     <div className="fw-bold"> {item.title} </div>
                 </div>
 
-                {
-                    item.total ? (
-                    <Badge bg="primary" pill>
-                        {item.total}
-                    </Badge>
-                    ) : null
-                }
+                <Badge bg="primary" pill>
+                    {item.total}
+                </Badge>
             </ListGroup.Item>
         ))}
     </ListGroup>

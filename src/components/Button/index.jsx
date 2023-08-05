@@ -8,12 +8,14 @@ export const ButtonComponent = ({ isLoading, label, loadingLabel, ...buttonProps
                 isLoading && (
                 <>
                 <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-                ><span className="visually-hidden">Carregando...</span></Spinner>{' '}
+                    as="span" 
+                    animation="border" 
+                    size="sm" 
+                    role="status" 
+                    aria-hidden="true" 
+                >
+                    <span className="visually-hidden">Carregando...</span>
+                </Spinner>{' '}
                 </>
             )}
 
