@@ -45,9 +45,9 @@ export const Home = () => {
         )}
 
         <Container fluid>
-            <Row>
+            <Row gap={2}>
                 {pinsNormalized.map(pin => (
-                    <Col key={pin.id} xs={12} md={2}>
+                    <Col key={pin.id} xs={12} sm={6} lg={3} xxl={2}>
                         <CardContainer {...pin} />
                     </Col>
                 ))}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const HeaderPartial = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" bg="light" sticky="top">
       <Container>
         <Navbar.Brand href="#home">Descompin</Navbar.Brand>
 

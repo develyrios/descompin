@@ -7,6 +7,7 @@ import {
     Route 
 } from "react-router-dom";
 import { AppContext } from "./store/AppContext";
+import GlobalStyle from "./GlobalStyle";
 
 const initialState = {
   activePinId: null,
@@ -18,6 +19,8 @@ const initialState = {
 
 export const App = () => {
   return (
+    <>
+    <GlobalStyle />
     <BrowserRouter>
       <div className="App">
         <AppContext initialState={initialState}>
@@ -32,5 +35,6 @@ export const App = () => {
         </AppContext>
       </div>
     </BrowserRouter>
+    </>
   )
 }
