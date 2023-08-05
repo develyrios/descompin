@@ -4,12 +4,12 @@ import Button from 'react-bootstrap/Button';
 
 export const CardComponent = ({ image, title, total, onClick, id }) => {
   return (
-    <Card className="bg-dark text-white">
+    <Card border="light" bg="secondary" text="white">
       <Card.Img src={image} alt="Card image" />
 
       <Card.ImgOverlay>
-        <Button variant="primary" onClick={() => onClick(id)}>
-        Profile <Badge bg="secondary">{total}</Badge>
+        <Button variant="primary" text="white" onClick={() => onClick(id)}>
+        Salvar pin <Badge bg="white" text="primary">{total}</Badge>
         </Button>
       </Card.ImgOverlay>
 

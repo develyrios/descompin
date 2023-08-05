@@ -3,13 +3,13 @@ import { useAppContext } from "../../store/AppContext";
 import { openModalSavePinAction } from "../../store/actions";
 
 export const CardContainer = (props) => {
-    const { state, dispatch } = useAppContext();
+    const { dispatch } = useAppContext();
 
     const handleClick = (pinId) => {
         dispatch(openModalSavePinAction(pinId))
     }
 
     return (
-        <CardComponent {...props} onClick={handleClick}/>
+        <CardComponent {...props} onClick={handleClick} />
     )
 }
