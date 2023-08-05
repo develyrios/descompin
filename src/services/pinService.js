@@ -61,5 +61,11 @@ export const getPins = async () => {
             image: "https://picsum.photos/200/300?37",
             total: 0,
         },
+        {
+            id: "0ABC",
+            title: "Pin Teste 4",
+            image: "https://picsum.photos/200/300?25",
+            total: 0,
+        },
     ]
 }
