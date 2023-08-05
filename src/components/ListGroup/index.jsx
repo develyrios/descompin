@@ -13,13 +13,9 @@ export const ListGroupComponent = ({ items = [] }) => {
                     <div className="fw-bold"> {item.title} </div>
                 </div>
 
-                {
-                    item.total ? (
-                    <Badge bg="primary" pill>
-                        {item.total}
-                    </Badge>
-                    ) : null
-                }
+                <Badge bg="primary" pill>
+                    {item.total}
+                </Badge>
             </ListGroup.Item>
         ))}
     </ListGroup>

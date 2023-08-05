@@ -1,24 +1,20 @@
 import Container from 'react-bootstrap/Container';
 import { ListGroupComponent } from '../../components/ListGroup';
+import { useAppContext } from '../../store/AppContext';
+
+const adapterItems = (items) => {
+    return items.map(item => ({
+        title: item.name,
+        total: item.pins.length,
+    }))
+}
 
 export const MinhasPastasPage = () => {
+    const { state } = useAppContext();
+
     return (
         <Container>
-            <ListGroupComponent 
-                items={[
-                    {
-                        title: "Pasta 1",
-                        total: 3
-                    },
-                    {
-                        title: "Pasta 2",
-                        total: 10
-                    },
-                    {
-                        title: "Pasta 3",
-                    },
-                ]}
-            />
+            <ListGroupComponent items={adapterItems(state.folders)} />
         </Container>
     )
 }
